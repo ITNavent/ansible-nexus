@@ -92,7 +92,6 @@
     dest="{{ nexus_installation_dir }}/nexus-{{ nexus_version }}/conf/nexus.properties"
     replace="application-port={{ nexus_port }}"
     regexp="^application-port=.*$"
-    state=present
   notify:
     - 'restart nexus'
 
@@ -101,7 +100,6 @@
     dest="{{ nexus_installation_dir }}/nexus-{{ nexus_version }}/conf/nexus.properties"
     replace="nexus-work={{ nexus_working_dir }}"
     regexp="nexus-work=.*"
-    state=present
   notify:
     - 'restart nexus'
 
