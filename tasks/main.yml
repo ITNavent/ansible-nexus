@@ -88,18 +88,18 @@
     state=directory
 
 - name: Configure port in nexus.properties
-  lineinfile:
+  replace:
     dest="{{ nexus_installation_dir }}/nexus-{{ nexus_version }}/conf/nexus.properties"
-    line="application-port={{ nexus_port }}"
-    regexp="application-port=.*"
+    replace="application-port={{ nexus_port }}"
+    regexp="^application-port=.*$"
     state=present
   notify:
     - 'restart nexus'
 
 - name: Configure workdir in nexus.properties
-  lineinfile:
+  replace:
     dest="{{ nexus_installation_dir }}/nexus-{{ nexus_version }}/conf/nexus.properties"
-    line="nexus-work={{ nexus_working_dir }}"
+    replace="nexus-work={{ nexus_working_dir }}"
     regexp="nexus-work=.*"
     state=present
   notify:
